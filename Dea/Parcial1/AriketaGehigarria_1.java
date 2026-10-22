@@ -9,7 +9,10 @@ public class DoubleLinkedList<T> {
  public T azkenaLortu(int jauzia){
     int i = 0;
     while (i<jauzia){
-        first.next;
+        first.prev.next = first.next;
+        first.next.prev = first.prev;
+        first= first.prev;
+        i++;
     }
  }
  // aurre: listak gutxienez elementu bat du
