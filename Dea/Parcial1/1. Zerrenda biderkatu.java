@@ -14,7 +14,15 @@ public class Lista<T> {
         boolean amataitu = true;
         while (amataitu) {
             for(int i=0; i<n ;i++){
-                
+                Node temp = new node(current.data);
+                temp.prev = current;
+                temp.next = current.next;
+                current.next.prev = temp;
+                current.next=temp;
+                current= current.next;
+            }
+            if(current.next.data == hasierakoNodoa.data){
+                amataitu = false;
             }
         }
     }
