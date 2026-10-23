@@ -4,7 +4,7 @@ public class DoubleNode<T> {
  DoubleNode<T> next;
  DoubleNode<T> prev;
 }
-public class DoubleLinkedList<T> {
+public class DoubleLinkedList<T> { //0(n+m), izan ere n aldiz egingo du lehenengo begizta, 2 elementu geratu arte, eta gero m aldiz egingo du hurrengoa, elem 1 geratu arte
  DoubleNode<T> first;
  //a
  public T azkenaLortu(int jauzia){
@@ -12,13 +12,31 @@ public class DoubleLinkedList<T> {
     // post: elementu bakarreko lista bueltatuko du, zerrendatik pausu
     // bakoitzean elementu bat kenduz, unekotik jauzi elementu pasatuz
     // (erlojuko orratzen norabidean) elementu bakarra g
-    int i = 0;
-    while (i<jauzia){
-        first.prev.next = first.next;
-        first.next.prev = first.prev;
-        first= first.prev;
-        i++;
+    DoubleNode<T> unekoa=first;
+    DoubleNode<T> aurrekoa= first.prev;
+    int i=jauzia;
+    while(unekoa.next!=first){
+        if(jauzia>0){
+            aurrekoa= unekoa;
+            unekoa= unekoa.next;
+            i--;
+        }else{
+            if(unekoa.equals(first)){
+                first=aurrekoa;
+            }
+            aurrekoa= unekoa.next;
+            unekoa.next.prev=aurrekoa;
+            i=jauzia;
+
+        }
     }
+    while{jauzia<0}{
+        aurrekoa=unekoa;
+        unekoa=unekoa.next;
+    }
+    first=aurrekoa;
+    aurrekoa.next=null;
+    aurrekoa.prev=null;
+    return aurrekoa.data
+
  }
- //b koste konstantea da f(n), subprograma n aldiz egingo da jauzi eta listaren arabera.
-}
