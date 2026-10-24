@@ -12,8 +12,8 @@ public class Matrize {
         // post: emaitza m1 eta m2 matrizeen batura da
         Matrize batura= new Matrize();
         Node oraingoa= batura.first;
-        mat1=m1.first;
-        mat2=m2.first;
+        Node mat1=m1.first;
+        Node mat2=m2.first;
         while(mat1.next!=null || mat2.next!= null){
             Node elementua= new Node();
             if((mat1.errenkada==mat2.errenkada)&&(mat2.zutabea==mat1.zutabea)){//guztiak berdinak
@@ -34,7 +34,7 @@ public class Matrize {
                 elementua.zutabea= mat1.zutabea;
                 elementua.errenkada=mat1.errenkada;
                  if(batura.first==null){
-                    first=elementua;
+                    batura.first=elementua;
                     oraingoa=elementua;
                 }else{
                     oraingoa.next=elementua;
@@ -45,7 +45,7 @@ public class Matrize {
                 elementua.zutabea= mat2.zutabea;
                 elementua.errenkada=mat2.errenkada;
                  if(batura.first==null){
-                    first=elementua;
+                    batura.first=elementua;
                     oraingoa=elementua;
                 }else{
                     oraingoa.next=elementua;

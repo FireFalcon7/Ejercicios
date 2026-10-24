@@ -9,21 +9,26 @@ public class Lista<T> {
         // aurre: n >= 1
         // post: zerrenda aldatu da, eta hasierako zerrendako elementu
         // bakoitza n aldiz dau
-        Node current = first;
-        Node hasierakoNodoa = current;
-        boolean amataitu = true;
-        while (amataitu) {
-            for(int i=0; i<n ;i++){
-                Node temp = new node(current.data);
-                temp.prev = current;
-                temp.next = current.next;
-                current.next.prev = temp;
-                current.next=temp;
-                current= current.next;
-            }
-            if(current.next.data == hasierakoNodoa.data){
-                amataitu = false;
-            }
+      if (first == null || n <= 1) {
+        return;
         }
+        Node current= first;
+        Node azkena= first.prev;
+        boolean amaitua= false;
+     while(!amaitua){
+         if(current==azkena){
+            amaitua=true;
+        }
+        Node hurrengoa= current.next;
+      for(int i=n-1; i>0;i--){//nodo baten biderketa
+        Node kopia= new Node(current.data);
+        kopia.next= hurrengoa;
+        kopia.prev=current;
+        current.next=kopia;
+        hurrengoa.prev=kopia;
+        current=kopia;
+        }
+        current= hurrengoa;
+    }
     }
 }

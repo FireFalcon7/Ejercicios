@@ -1,0 +1,53 @@
+public class Node {
+ String koord;
+ Node next;
+ Node left;
+ Node right;
+}
+public class Bidea {
+ Node first;
+ public CircularLinkedList<String> lortuKoordenatuak(ArrayList<String> ekintzak){
+ // pre: ekintzakzerrendak gutxienez elementu bat du, eta errobotak
+ // egingo dituen mugimenduak adierazten ditu
+ // Mugimenduek ez dute inoiz errorerik emango (errobota sekula
+ // ez da saiatuko null erreferentzia bat jarraitzen)
+ // post: zerrenda bat bueltatuko du,
+ // errobotak jarraitu dituen koordenatuekin
+ String ekintza=null;
+CircularLinkedList<String> bidea = new CircularLinkedList();
+ Node current= first;
+ current=current.next;
+ bidea.first= new Node(current.data);
+ NodeCircularLinkedList oraingokoord= bidea.first;
+ bidea.last= oraingokoord;
+ for(int i=0; i<=ekintzak.length();i++){
+    ekintza= ekintzak[i];
+    NodeCircularLinkedList koordberri= new NodeCircularLinkedList();
+    if(ekintza=="aurrera"){
+        current= current.next;
+        koordberri.data=current.data;
+        oraingokoord.next= koordberri;
+        bidea.last=koordberri;
+    }else if(ekintza=="ezkerra"){
+        current= current.left;
+        koordberri.data=current.data;
+        oraingokoord.next= koordberri;
+        bidea.last=koordberri;
+    }else if(ekintza=="eskuina"){
+        current= current.right;
+        koordberri.data=current.data;
+        oraingokoord.next= koordberri;
+        bidea.last=koordberri;
+    }
+
+ }
+}
+public class CircularLinkedList<T> {
+ // zerrenda zirkularra azkenaren erreferentziarekin
+ NodeCircularLinkedList<T> first;
+ NodeCircularLinkedList<T> last;
+}
+public class NodeCircularLinkedList<T> {
+ T data;
+ NodeCircularLinkedList<T> next;
+}

@@ -1,0 +1,40 @@
+public class DoubleNode<T> {
+ T data;
+ DoubleNode<T> next;
+ DoubleNode<T> prev;
+}
+public class DoubleLinkedList<T> {
+ DoubleNode<T> first;
+ public void ezabatuLista(DoubleLinkedList<T> azpilista){
+ // Aurrebaldintza: azpilista uneko listaren zati bat da
+ // azpilista zerrendako elementuak ordena berean daude lista nagusian
+ // Postbaldintza: azpilista osoa kendu egin da zerrendatik
+    boolean amaituta= false;
+    DoubleNode aurrekoa= first.prev;
+    DoubleNode oraingoa= first;
+    DoubleNode azkenNodoa=first.prev;
+    DoubleNode ezabatuBeharrekoa= azpilista.first;
+    while(!amaituta){
+        if(oraingoa== azkenNodoa){
+            amaituta= true;
+        }
+        if(oraingoa==ezabatuBeharrekoa){
+            aurrekoa.next=oraingoa.next;
+            oraingoa.next.prev = aurrekoa;
+            oraingoa= oraingoa.next;
+            ezabatuBeharrekoa=ezabatuBeharrekoa.next;
+        }else{
+            aurrekoa=oraingoa;
+            oraingoa= oraingoa.next;
+        }
+    }
+ 
+
+
+
+
+
+
+
+}
+}
