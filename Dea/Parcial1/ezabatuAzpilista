@@ -9,20 +9,31 @@ public class DoubleLinkedList<T> {
  // Aurrebaldintza: azpilista uneko listaren zati bat da
  // azpilista zerrendako elementuak ordena berean daude lista nagusian
  // Postbaldintza: azpilista osoa kendu egin da zerrendatik
+    if(first==null||azpilista.first==null){
+        break;
+    }
     boolean amaituta= false;
     DoubleNode aurrekoa= first.prev;
     DoubleNode oraingoa= first;
-    DoubleNode azkenNodoa=first.prev;
+    DoubleNode azpilistakoAzkena=azpilista.first.prev;
     DoubleNode ezabatuBeharrekoa= azpilista.first;
     while(!amaituta){
-        if(oraingoa== azkenNodoa){
+        if(ezabatuBeharrekoa== azpilistakoAzkena){
             amaituta= true;
         }
-        if(oraingoa==ezabatuBeharrekoa){
-            aurrekoa.next=oraingoa.next;
-            oraingoa.next.prev = aurrekoa;
-            oraingoa= oraingoa.next;
+        if (oraingoa.next== oraingoa){
+            first=null;
+            break;
+        }else if(oraingoa.data.equals(ezabatuBeharrekoa.data)){
+            DoubleNode hurrengoa = oraingoa.next;
+            aurrekoa.next=hurrengoa;
+            hurrengoa.prev = aurrekoa;
+            if(oraingoa==first){
+                first=hurrengoa;
+            }
+            oraingoa= hurrengoa;
             ezabatuBeharrekoa=ezabatuBeharrekoa.next;
+            
         }else{
             aurrekoa=oraingoa;
             oraingoa= oraingoa.next;
