@@ -1,13 +1,15 @@
 import java.util.ArrayList;
 
+import org.w3c.dom.Node;
+
 public class Errebotea {
-    Node first;
     protected class Node<T>{
         String koord;
         Node<T> next;
         Node<T> left;
         Node<T> right;
     }
+    Node first;
     protected class CircularLinkedList<T>{
         NodeCircularLinkedList<T> last;
         public void gehitu(T data) {

@@ -4,12 +4,12 @@ public class Matrize {
     int errenkada;
     int zutabea;
     Node next;
-}
+    }
     Node first;
     public Matrize batura(Matrize m1, Matrize m2) {
         // aurre:
         // post: emaitza m1 eta m2 matrizeen batura da
-        Matrize batura;
+        Matrize batura = new Matrize();
         Node currentBatura = batura.first;
         Node currentM1 =m1.first;
         Node currentM2 =m2.first;

@@ -1,10 +1,13 @@
-public class Node<T> {
-    String data;
-    Node<T> next;
-    Node<T> prev;
-}
 public class Lista<T> {
     Node<T> first;
+    protected class Node<T> {
+        String data;
+        Node<T> next;
+        Node<T> prev;
+        public Node(String data){
+            this.data = data;
+        }
+    }
     public void biderkatu(Integer n) {
         // aurre: n >= 1
         // post: zerrenda aldatu da, eta hasierako zerrendako elementu
@@ -14,7 +17,7 @@ public class Lista<T> {
         boolean amataitu = true;
         while (amataitu) {
             for(int i=0; i<n ;i++){
-                Node temp = new node(current.data);
+                Node temp = new Node(current.data);
                 temp.prev = current;
                 temp.next = current.next;
                 current.next.prev = temp;

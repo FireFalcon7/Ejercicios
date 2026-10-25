@@ -1,11 +1,11 @@
 //Enuntziatua
-public class DoubleNode<T> {
- T data;
- DoubleNode<T> next;
- DoubleNode<T> prev;
-}
 public class DoubleLinkedList<T> {
- DoubleNode<T> first;
+    DoubleNode<T> first;
+    protected class DoubleNode<T> {
+     T data;
+     DoubleNode<T> next;
+     DoubleNode<T> prev;
+    }
  //a
  public T azkenaLortu(int jauzia){
      // aurre: listak gutxienez elementu bat du
@@ -19,6 +19,7 @@ public class DoubleLinkedList<T> {
         first= first.prev;
         i++;
     }
+    return first.data;
  }
  //b koste konstantea da f(n), subprograma n aldiz egingo da jauzi eta listaren arabera.
 }
