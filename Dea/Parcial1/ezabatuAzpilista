@@ -40,12 +40,5 @@ public class DoubleLinkedList<T> {
         }
     }
  
-
-
-
-
-
-
-
 }
-}
+}//Kostua: Tif(k)+Tw(tif·n), beraz, O(n+m)izango da, non n azpilistako nodo kopuruak diren eta m 1. nodoa aurkitu arte lehen zerrendan zeharkatu dena da.(kasu txarrenean kostua lista originalaren luzerak determinatzen du)

@@ -1,0 +1,42 @@
+public class DoubleNode<T> {
+ T data;
+ DoubleNode<T> next;
+ DoubleNode<T> prev;
+}
+public class DoubleLinkedList<T> {
+ DoubleNode<T> first;
+ public void gehitu(T elem, ArrayList<T> berriak)
+ // Aurrebaldintza:
+ // Postbaldintza: berriak zerrendako elementuak listan txertatu dira,
+ // elem ondoren.
+ // elem zerrendan ez balego, lista ez da aldatuko
+ if(first==null||elem==null||berriak.isEmpty()){
+    return;
+ }
+  DoubleNode<T> current= first;
+  DoubleNode<T> lehenengoNodoa= first;
+  boolean amaituta= false;
+  boolean hasiera= false;
+  int i=0;
+ while(current!= first){
+    if(current.data.equals(elem)){
+        hasiera=true;
+        break;
+    }
+    current= current.next;
+ }
+    if(!hasiera){
+        return;
+    }
+  while(i<berriak.size()){
+        DoubleNode<T> sartuBeharrekoa= new  DoubleNode<T>(berriak.get(i));
+        DoubleNode<T> hurrengoa= current.next;
+        current.next= sartuBeharrekoa;
+        hurrengoa.prev=sartuBeharrekoa;
+        sartuBeharrekoa.prev=current;
+        sartuBeharrekoa.next=hurrengoa;
+        i++;
+        current=sartuBeharrekoa;
+  }
+}
+//kostua: Tif(k)+Tw1(n)+Tw2(m), beraz, O(n+m)izango da, non n nodo kopurua eta m listaren luzera izango diren
