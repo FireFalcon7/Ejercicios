@@ -1,6 +1,6 @@
 package src;
 
-public class Lista {
+public class c_Lista {
     protected class Node<T>{
       String data;
       Node<T> next;

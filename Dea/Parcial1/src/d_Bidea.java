@@ -2,7 +2,7 @@ package src;
 
 import java.util.ArrayList;
 
-public class Bidea {
+public class d_Bidea {
     Node first;
     protected class Node<T>{
         String koord;

@@ -1,6 +1,6 @@
 package src;
 
-public class DobleLinkedList<T>{
+public class a_DobleLinkedList<T>{
     DoubleNode<T> first;
     protected class DoubleNode<T>{
         T data;

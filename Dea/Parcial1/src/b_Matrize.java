@@ -1,6 +1,6 @@
 package src;
 
-public class Matrize {
+public class b_Matrize {
     Node first;
 
     protected class Node<T> {
@@ -25,8 +25,8 @@ public class Matrize {
         }
     }
 
-    public Matrize batura(Matrize m1, Matrize m2){
-        Matrize emaitza = new Matrize();
+    public b_Matrize batura(b_Matrize m1, b_Matrize m2){
+        b_Matrize emaitza = new b_Matrize();
         Node p1 = m1.first;
         Node p2 = m2.first;
         Node current = null;
