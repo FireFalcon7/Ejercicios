@@ -1,11 +1,10 @@
-//enuntziatua
-public class Node {
+public class Matrize {
+    protected  class Node {
     int balioa;
     int errenkada;
     int zutabea;
-    Node<T> next;
+    Node next;
 }
-public class Matrize {
     Node first;
     public Matrize batura(Matrize m1, Matrize m2) {
         // aurre:
