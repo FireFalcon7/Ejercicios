@@ -21,7 +21,7 @@ public class DoubleCircularLinkedList<T> {// Estekadura bikoitzeko zerrenda zirk
                 berria.next = current;
                 current.prev.next = berria;
                 current.prev= berria;
-                if(s.length>i){
+                if(s.length>i+1){
                     i++;
                 }
             }else if (current.next.equals(first)) {
@@ -32,7 +32,7 @@ public class DoubleCircularLinkedList<T> {// Estekadura bikoitzeko zerrenda zirk
                     berria.next = current.next;
                     current.next.prev = berria;
                     current.next= berria;
-                    if(s.length>i){
+                    if(s.length>i+1){
                         i++;
                     }
                 }else{

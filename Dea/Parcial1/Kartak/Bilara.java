@@ -1,5 +1,5 @@
 package Kartak;
 
-public class Bilara {
+public class Bilara<T> {
 
 }
