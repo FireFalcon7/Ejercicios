@@ -6,8 +6,8 @@ public class KartaSorta {
 
     } // eraikitzailea
     // post: 40 karta daude ausaz
-    public Iterator<Carta> iteradore(){
-        
+    public Iterator<Karta> iteradore(){
+
     }
     // kartak aztertzeko iteradorea bueltatzen du
     public Karta[] getKartak() {
