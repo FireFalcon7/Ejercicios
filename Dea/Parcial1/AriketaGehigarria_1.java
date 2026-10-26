@@ -30,13 +30,13 @@ public class DoubleLinkedList<T> { //0(n+m), izan ere n aldiz egingo du leheneng
 
         }
     }
-    while{jauzia<0}{
+    while(jauzia<0){
         aurrekoa=unekoa;
         unekoa=unekoa.next;
     }
     first=aurrekoa;
     aurrekoa.next=null;
     aurrekoa.prev=null;
-    return aurrekoa.data
-
+    return aurrekoa.data;
+ }
  }

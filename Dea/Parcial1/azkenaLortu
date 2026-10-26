@@ -1,0 +1,32 @@
+public DoubleNode<T> {
+ T data;
+ DoubleNode<T> next;
+ DoubleNode<T> prev;
+}
+public DoubleLinkedList<T> {
+ DoubleNode<T> first;
+ public T azkenaLortu(Integer jauzia){
+ // aurre: listak gutxienez elementu bat du
+ // post: elementu bakarreko lista bueltatuko du, zerrendatik pausu
+ // bakoitzean elementu bat kenduz, unekotik jauzi elementu pasatuz
+ // (erlojuko orratzen norabidean) elementu bakarra geratu arte
+ if(first.next==first){
+    return first.data;
+ }
+ DoubleNode<T> current= first;
+ while(first.next!= first){
+    for(int i=0;i<jauzia;i++){
+        current=current.next;
+    }
+    DoubleNode<T> hurrengoa=current.next;
+    DoubleNode<T> aurrekoa= current.prev;
+    aurrekoa.next=hurrengoa;
+    hurrengoa.prev=aurrekoa;
+    if(current==first){
+        first=hurrengoa;
+    }
+    current=hurrengoa;
+ }
+ return current.data;
+    }
+}
