@@ -9,22 +9,61 @@ public void sekuentziakFusionatu(String[] s){
 // Aurre: s sekuentzia ordenatuta dago
 // Post: emaitza s-ren balioak estekadura bikoitzeko zerrenda zirkularrean txertatuta
 //izango da (goranzko ordena mantenduko da)
-DoubleNode<T> current= first;
-for(int i=0;i<s.lenght()){
-    String datua= s[i];
-    if(current.data.compare(datua)<0){
-        current=current.next;
-    }else{
-       
-        DoubleNode<T> aurrekoa=current.prev;
-        DoubleNode<T> berria= new DoubleNode<T>(datua);
-        current.prev=berria;
-        aurrekoa.next=berria;
-        berria.prev=aurrekoa;
-        berria.next=current;
-        current=hurrengoa;
+DoubleNode<String> current= first;
+int i=0;
+if(first==null){
+    while(i<s.length){
+        DoubleNode<String> berria= new DoubleNode<String>;
+        berria.data= s[i];
+        if(first==null){
+            first=berria;
+            berria.next=berria;
+            berria.prev=berria
+            current=berria;
+        }else if(first.next==first){
+            first.next=berria;
+            berria.next=first;
+            berria.prev=first;
+            first.prev=berria;
+            current=berria;
+        }else{
+            DoubleNode<String> hurrengoa=current.next;
+            current.next= berria;
+            hurrengoa.prev=berria;
+            berria.next=hurrengoa;
+            berria.prev=current;
+            current=berria;
+
+        }
+    }
+}else{
+    while(i<s.length){
+        String datua= s[i];//datua hartzen dugu
+        if((current.data.compareTo(datua)<0)&&current.next!=first){//nodoa>datua izan arte aurrera egiten dugu, buelta osoa eman gabe
+            current=current.next;
+        }else if(current.data.compareTo(datua)>=0{//nodoa>datua denean, datua aurretik txertatuko dugu
+            DoubleNode<String> aurrekoa=current.prev;
+            DoubleNode<String> berria= new DoubleNode<String>();
+            berria.data=datua;
+            current.prev=berria;
+            aurrekoa.next=berria;
+            berria.prev=aurrekoa;
+            berria.next=current;
+            if(current==first){//lehenengo elementuaren atzean txertatzen badugu, erreferentzia eguneratu
+            first=berria;
+            }
+            current=current.next;
+            i++;
+        }else{//azkenengo elementua<datua da oraindik, ondoren txertatzen dugu;
+            DoubleNode<String> hurrengoa=current.next;
+            current.next=berria;
+            berria.prev= current;
+            berria.next= hurrengoa;
+            hurrengoa.prev=berria;
+            current=berria;
+            i++;
+        }    
     }
 }
-
 }
-}
+}//Kostua: O(n+m) dan, non n zerrenda originalean zeharkatu diren elementuak diren eta m arrayean dauden elementuak diren
