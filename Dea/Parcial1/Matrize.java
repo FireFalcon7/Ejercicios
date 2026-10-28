@@ -1,40 +1,63 @@
+
 public class Matrize {
-    protected  class Node {
-    int balioa;
-    int errenkada;
-    int zutabea;
-    Node next;
-    }
     Node first;
-    public Matrize batura(Matrize m1, Matrize m2) {
-        // aurre:
-        // post: emaitza m1 eta m2 matrizeen batura da
-        Matrize batura = new Matrize();
-        Node currentBatura = batura.first;
-        Node currentM1 =m1.first;
-        Node currentM2 =m2.first;
-        while(currentM1.next != null && currentM2.next != null){
-            if((currentM1.zutabea < currentM2.zutabea && currentM1.errenkada == currentM2.errenkada)||currentM1.errenkada < currentM2.errenkada){
-                currentBatura.balioa =currentM1.balioa;
-                currentBatura.errenkada = currentM1.errenkada;
-                currentBatura.zutabea =  currentM1.zutabea;
-                currentM1 = currentM1.next;
-                currentBatura = currentBatura.next;
-            }else if((currentM1.zutabea > currentM2.zutabea && currentM1.errenkada == currentM2.errenkada)||currentM1.errenkada > currentM2.errenkada){
-                currentBatura.balioa =currentM2.balioa;
-                currentBatura.errenkada = currentM2.errenkada;
-                currentBatura.zutabea =  currentM2.zutabea;
-                currentM2 = currentM2.next;
-                currentBatura = currentBatura.next;
-            }else if(currentM1.zutabea == currentM2.zutabea && currentM1.errenkada == currentM2.errenkada){
-                currentBatura.balioa =currentM1.balioa+currentM2.balioa;
-                currentBatura.errenkada = currentM1.errenkada;
-                currentBatura.zutabea =  currentM1.zutabea;
-                currentM1 = currentM1.next;
-                currentM2 = currentM2.next;
-                currentBatura = currentBatura.next;
+
+    protected class Node<T> {
+        Integer balioa;
+        Integer errenkada;
+        Integer zutabea;
+        Node<T> next;
+
+        public Node(){
+            this.balioa=null;
+            this.errenkada= null;
+            this.zutabea= null;
+            this.next=null;
+        }
+
+        public Node(Integer balioa, Integer errenkada, Integer zutabea, Node next) {
+            Node node = new Node();
+            node.balioa = balioa;
+            node.errenkada=errenkada;
+            node.zutabea=zutabea;
+            node.next=next;
+        }
+    }
+
+    public Matrize batura(Matrize m1, Matrize m2){
+        Matrize emaitza = new Matrize();
+        Node p1 = m1.first;
+        Node p2 = m2.first;
+        Node current = null;
+        Node berria = null;
+        while (p1!=null || p2!=null){
+            if(p1.errenkada<p2.errenkada || p1.errenkada.equals(p2.errenkada) && p1.zutabea<p2.zutabea){
+                berria = new Node(p1.balioa,p1.errenkada,p2.zutabea,null);
+                p1=p1.next;
+            }
+            else if(p2.errenkada<p1.errenkada || p2.errenkada.equals(p1.errenkada) && p2.zutabea<p1.zutabea){
+                berria = new Node(p2.balioa,p2.errenkada,p2.zutabea,null);
+                p2=p2.next;
+            }
+            else{
+                int gei = p1.balioa+ p2.balioa;
+                if (gei!=0) {
+                    berria = new Node(gei, p1.errenkada, p1.zutabea, null);
+                }
+                p1=p1.next;
+                p2=p2.next;
+            }
+            if (berria!=null){
+                if (emaitza.first==null){
+                    emaitza.first = berria;
+                    current = berria;
+                }
+                else{
+                    current.next=berria;
+                    current = current.next;
+                }
             }
         }
-        return batura;
+        return emaitza;
     }
 }
