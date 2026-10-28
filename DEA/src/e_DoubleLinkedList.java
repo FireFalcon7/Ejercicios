@@ -1,4 +1,3 @@
-package src;
 public class e_DoubleLinkedList<T> {
     protected class DoubleNode<T> {
         T data;

@@ -1,5 +1,3 @@
-package src;
-
 import java.util.ArrayList;
 
 public class f_DoubleLinkedList<T>{
