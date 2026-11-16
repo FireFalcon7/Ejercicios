@@ -24,9 +24,7 @@ public class Joko {
             billeteak.set(
                 ordainketa.ordaintzailea,
                 billeteak.get(ordainketa.ordaintzailea) - ordainketa.kopurua);
-            billeteak.set(
-                ordainketa.kobratzailea,
-                billeteak.get(ordainketa.kobratzailea) + ordainketa.kopurua);
+            billeteak.set(ordainketa.kobratzailea,billeteak.get(ordainketa.kobratzailea) + ordainketa.kopurua);
         }
 
         return billeteak.get(0);
