@@ -1,7 +1,7 @@
 package Kartak;
 
 public class KartaSorta {
-    prívate Karta[] kartak = new Array();
+    private Karta[] kartak = new Array();
     public KartaSorta (){
 
     } // eraikitzailea
@@ -13,7 +13,7 @@ public class KartaSorta {
     public Karta[] getKartak() {
         return kartak;
     }
-    Public void setKartak(Karta[] kartak) {
+    public void setKartak(Karta[] kartak) {
         this.kartak = kartak;
     }
 } 

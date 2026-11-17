@@ -16,10 +16,10 @@ public class Portu {
         nasak = (Stack<String>[]) new Stack[nasaKop];
         for(int i=0;i< nasaKop; i++){nasak[i] = new Stack<String>();}
         while(!ontziak.isEmpty()){
-            int nasaKarga = ontziak.peek().eskaerak.peek().nasa;
             if(ontziak.peek().mota == 0){
                 int kontadore = 0;
-                while (!ontziak.peek().eskaerak.isEmpty()&&kontadore>=maxEskaera) {
+                while (!ontziak.peek().eskaerak.isEmpty()&&kontadore<maxEskaera) {
+                    int nasaKarga = ontziak.peek().eskaerak.peek().nasa;
                     nasak[nasaKarga].push(ontziak.peek().eskaerak.remove().kontainerKode);
                     kontadore++;
                 }
@@ -30,13 +30,19 @@ public class Portu {
                 }
             }else{
                 while (!ontziak.peek().eskaerak.isEmpty()){
+                    int nasaKarga = ontziak.peek().eskaerak.peek().nasa;
                     while (!nasak[nasaKarga].isEmpty()&&!(ontziak.peek().eskaerak.peek().kontainerKode.equals(nasak[nasaKarga].peek()))) {
                         nasak[0].push(nasak[nasaKarga].pop());
                     }
                     if(!nasak[nasaKarga].isEmpty()){
                         nasak[nasaKarga].pop();
                     }
+                    ontziak.peek().eskaerak.remove();
+                    while (!nasak[0].isEmpty()){
+                        nasak[nasaKarga].push(nasak[0].pop());
+                    }
                 }
+                ontziak.remove();
             }
         }
     }
