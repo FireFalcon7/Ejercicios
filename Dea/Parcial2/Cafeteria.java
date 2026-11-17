@@ -43,5 +43,4 @@ public class Cafeteria {
         return 0;
     }
     // Postbaldintza: true baldin p1 eta p2 talde berekoak badira eta false bestela
-
 } // Cafeteria
