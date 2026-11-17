@@ -11,26 +11,37 @@ public class portua {
         Queue<Eskaera> eskaerak;
     }
     Stack<String> nasak[];
-    public void portuaSimulatu(Queue<Ontzia> ontziak, int maxEskaera, int nasaKop){
-        //Aurre: maxEskaera deskargako ontzi batek txanda batean kudeatu ditzakeen
-        //eskaera kopurua da (>=1)
-        //Aurre: nasaKop portuaren nasa kopurua da (>=2). 0. nasa berezia da.
-        while(!ontziak.isEmpty()){
-            if(ontziak.size() == 0){
-            }else if(ontziak.peek().mota == 0){
-                ontziCurrent = ontziak.peek();
-                for(ontziCurrent.eskaerak: Eskaera eskaeraOrain){
-                    if(nasak[eskaeraOrdain.nasa].size() < maxEskaera){
-                        nasak[eskaeraOrdain.nasa].push(eskaeraOrdain.kontainerKode);
-                    }else{
-                        //eskaria ez da bete, nasa beteta dago
+    public void portuaSimulatu(Queue<Ontzia> ontziak, int maxEskaera, int nasaKop) {
+        nasak = (Stack<String>[]) new Stack[nasaKop];
+        for (int i = 0; i < nasaKop; i++) { nasak[i] = new Stack<String>();} //hasieratu
+        while (!ontziak.isEmpty()) {
+            Ontzia ontzia = ontziak.remove();
+            if (ontzia.mota == 0) {
+                int kop = 0;
+                while (kop < maxEskaera && !ontzia.eskaerak.isEmpty()) {
+                    Eskaera eskaera = ontzia.eskaerak.remove();
+                    nasak[eskaera.nasa].push(eskaera.kontainerKode);
+                    kop++;
+                }
+                if (!ontzia.eskaerak.isEmpty()) { // Eskaerak geratzen bazaizkio, beste txanda baten zain geratu.
+                    ontziak.add(ontzia);
+                }
+            } else {
+                while (!ontzia.eskaerak.isEmpty()) { // Kargako ontziak eskaera guztiak betetzen ditu txanda berean.
+                    Eskaera eskaera = ontzia.eskaerak.peek();
+                    Stack<String> nasa = nasak[eskaera.nasa];
+                    while (!nasa.isEmpty()&& !eskaera.kontainerKode.equals(nasa.peek())) { // Bilatutako kontainerraren gainekoak 0. nasara eraman.
+                        nasak[0].push(nasa.pop());
                     }
-                    
+                    boolean aurkitua = !nasa.isEmpty();
+                    if (aurkitua) { nasa.pop(); }
+                    while (!nasak[0].isEmpty()) { // Gainerako kontainerrak jatorrizko ordenan.
+                        nasa.push(nasak[0].pop());
+                    }
+                    if (!aurkitua) { System.out.println("Kontainerra ez dago adierazitako nasan!");}
+                    ontzia.eskaerak.remove();
                 }
             }
         }
-        //Post: portuaren jarduera simulatu da, ontzien eskaerak betez.
-        //Nasak sortu...
-        //Portuaren jarduera simulatu...
     }
 }
