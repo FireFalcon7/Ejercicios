@@ -1,0 +1,30 @@
+public class Karta {
+ String palo; // urrea, kopa, ezpata, bastoia
+ int balioa; // 1 eta 10 arteko balioa
+}
+public class KartaSorta {
+ prívate Karta[] kartak;
+ public KartaSorta (); // eraikitzailea
+ // post: 40 karta daude ausaz
+ public Iterator<Carta> iteradore()
+ // kartak aztertzeko iteradorea bueltatzen du
+} 
+
+public class Bilara<T> {
+ public Bilara(); // eraikitzailea
+ // bilara hasieratzen du (hutsa)
+ public boolean hutsaDa();
+ // true B hutsa baldin bada eta false bestela.
+ public void txertatuEzk(T elemento);
+ // E elementua ezkerretik gehitu dio
+ public void txertatuEsk(T elemento);
+ // E elementua eskuinetik gehitu dio
+ public void ezabatuEzk();
+ // ezkerrean dagoen elementua ezabatu du
+ public void ezabatuEsk();
+ // eskuinean dagoen elementua ezabatu du
+ public T lortuEzk();
+ // ezkerrean dagoen elementua bueltatzen du
+ public T lortuEsk();
+ // eskuinean dagoen elementua bueltatzen du
+}
