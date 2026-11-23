@@ -5,35 +5,37 @@ public class Kafetegia {
     public void txertatu(Integer elem){
         if (ilara ==null){
             ilara = new LinkedList<Queue<Integer>>();
-        }
-        if (ilara.isEmpty()) {
-            Queue<Integer> txertatu = new LinkedList<Integer>();
-            txertatu.add(elem);
-            ilara.add(txertatu);
+            Queue<Integer> subIlara  = new LinkedList<Integer>();
+            subIlara.add(elem);
         } else {
-            for(int i=0; i<ilara.size()-1;i++){
-                ilara.add(ilara.remove());
+            boolean amaitu = false;
+            boolean gehitua = false;
+            Queue<Integer> lehenengoa = ilara.peek();
+            while (!amaitu) {
+               if(taldeBera(ilara.peek().peek(), elem)){
+                    ilara.peek().add(elem);
+                    gehitua = true;
+                    amaitu = true;
+               } 
+               ilara.add(ilara.remove());
+               if (lehenengoa.equals(ilara.peek())) {
+                    amaitu = true;
+               }
             }
-            Queue<Integer> azkena = ilara.peek();
-            ilara.add(ilara.remove());
-            int j=0;
-            boolean aurkitua = false;
-            while(j<azkena.size()){
-                if(taldeBera(elem, azkena.peek())&& !aurkitua){
-                    azkena.add(azkena.remove());
-                    azkena.add(elem);
-                    aurkitua = true;
-                }else{
-                    azkena.add(azkena.remove());
-                }
-                j++;
+            if (!gehitua) {
+                Queue<Integer> berria  = new LinkedList<Integer>();
+                berria.add(elem);
+                ilara.add(berria);
             }
-            ilara.add(azkena);
         }
     }
     // Postbaldintza: “elem” gehitu da kafetegiko ilaran
     public Integer ezabatu(){
-        return -1;
+        int kendua =ilara.peek().remove();
+        if(ilara.peek().isEmpty()){
+            ilara.remove();
+        }
+        return kendua;
     }
     // Precondición: gutxienez pertsona bat dago ilaran
     // Postbaldintza: ilarako lehen elementua kendu da eta bere balioa bueltatu da

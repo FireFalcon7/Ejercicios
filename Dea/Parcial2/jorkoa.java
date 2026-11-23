@@ -14,6 +14,7 @@ public class jorkoa {
 
     public int jokoa(int n, ArrayList<Jokaldi> jokaldiak) {
         jokalariak = new LinkedList[n];
+        mahaia = new Stack<>();
         for(int i = 0; i<n;i++){
             Queue<Integer> jokalaria = new LinkedList<Integer>();
             jokalariak[i]=jokalaria;
@@ -24,8 +25,14 @@ public class jorkoa {
         for (Jokaldi jokaldi : jokaldiak) {
             if (jokaldi.dado1 == 6) {
                 return norIrabazi(jokalariak);
-            } else {
-                
+            } else if (jokaldi.dado1 % 2==0) {
+                int jokalariOrain = jokaldi.dado2;
+                mahaia.push(jokalariak[jokalariOrain].remove());
+            }else{
+                int jokalariOrain = jokaldi.dado2;
+                if (!mahaia.isEmpty()) {
+                    jokalariak[jokalariOrain].add(mahaia.pull());
+                }
             }
         }
         return norIrabazi(jokalariak);
@@ -44,22 +51,22 @@ public class jorkoa {
         int beltzKopIra = -1;
         int irabazleTemp = 0;
         for (Queue<Integer> jokalari : jokalariak){
-            if (i== 0) {
+            if (kont== 0) {
             } else {
-                int luzera = jokalari.size();
-                for(int g=0; g< luzera-1; g++){
-                    int beltzKop = 0;
+                int beltzKop = 0;
+                while(!jokalari.isEmpty()){
                     if (jokalari.peek()==0) {
                         beltzKop++;
-                        jokalari.remove();
                     }
+                    jokalari.remove();
                 }
-                if(beltzKopIra< beltzKopIra){
-
+                if(beltzKopIra < beltzKop){
+                    beltzKopIra = beltzKop;
+                    irabazleTemp = kont;
                 }
             }
             kont++;
         }
-        return -1;
+        return irabazleTemp;
     }
 }
