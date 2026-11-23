@@ -13,9 +13,9 @@ public class jorkoa {
     }
 
     public int jokoa(int n, ArrayList<Jokaldi> jokaldiak) {
-        jokalariak = new LinkedList[n];
+        jokalariak = new LinkedList[6];
         mahaia = new Stack<>();
-        for(int i = 0; i<n;i++){
+        for(int i = 0; i<6;i++){
             Queue<Integer> jokalaria = new LinkedList<Integer>();
             jokalariak[i]=jokalaria;
             for(int j=0; j<n; j++){
@@ -26,12 +26,14 @@ public class jorkoa {
             if (jokaldi.dado1 == 6) {
                 return norIrabazi(jokalariak);
             } else if (jokaldi.dado1 % 2==0) {
-                int jokalariOrain = jokaldi.dado2;
-                mahaia.push(jokalariak[jokalariOrain].remove());
+                int jokalariOrain = (jokaldi.dado2)-1;
+                if (!jokalariak[jokalariOrain].isEmpty()) {
+                    mahaia.push(jokalariak[jokalariOrain].remove());
+                }
             }else{
-                int jokalariOrain = jokaldi.dado2;
+                int jokalariOrain = (jokaldi.dado2)-1;
                 if (!mahaia.isEmpty()) {
-                    jokalariak[jokalariOrain].add(mahaia.pull());
+                    jokalariak[jokalariOrain].add(mahaia.pop());
                 }
             }
         }
