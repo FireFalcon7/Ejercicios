@@ -13,7 +13,22 @@ public class jorkoa {
     }
 
     public int jokoa(int n, ArrayList<Jokaldi> jokaldiak) {
-        
+        jokalariak = new LinkedList[n];
+        for(int i = 0; i<n;i++){
+            Queue<Integer> jokalaria = new LinkedList<Integer>();
+            jokalariak[i]=jokalaria;
+            for(int j=0; j<n; j++){
+                jokalaria.add(i);
+            }
+        }
+        for (Jokaldi jokaldi : jokaldiak) {
+            if (jokaldi.dado1 == 6) {
+                return norIrabazi(jokalariak);
+            } else {
+                
+            }
+        }
+        return norIrabazi(jokalariak);
         // aurre: n jokalari bakoitzaren hasierako fitxa-kopurua da
         //        "jokaldiak" zerrendak partida bateko jokaldiak ditu
         // post: emaitza irabazlearen zenbakia da
@@ -23,13 +38,28 @@ public class jorkoa {
         // 2. Recorrer jokaldiak aplicando las reglas de dado1 y dado2 (parando si dado1 == 6)
         
         // 3. Contar fichas negras (0) en los jugadores 1..5 y devolver el ganador
-        return -1;
     }
-    public boolean bakoitiaDa(int p){
-        if(p==1||p==3||p==5){
-            return true;
-        }else{
-            return false;
+    public int norIrabazi(Queue<Integer>[] jokalariak){
+        int kont = 0;
+        int beltzKopIra = -1;
+        int irabazleTemp = 0;
+        for (Queue<Integer> jokalari : jokalariak){
+            if (i== 0) {
+            } else {
+                int luzera = jokalari.size();
+                for(int g=0; g< luzera-1; g++){
+                    int beltzKop = 0;
+                    if (jokalari.peek()==0) {
+                        beltzKop++;
+                        jokalari.remove();
+                    }
+                }
+                if(beltzKopIra< beltzKopIra){
+
+                }
+            }
+            kont++;
         }
+        return -1;
     }
 }
